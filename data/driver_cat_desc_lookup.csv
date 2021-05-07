@@ -1,0 +1,16 @@
+﻿driver_cat,detection_strs,description,examples
+water quality,algal; algal bloom; anoxia; chlorophyll; depth; epiphytic algae; eutrophication; light; nitrate; nitrogen; nutrients; ocean acidification; oxygen; pH; phosphorous; phytoplankton bloom; salinity; sediment; water quality sedimentation; sedimentation; turbidity; water quality ,"Metrics of water quality, largely light related and excluding non-nutrient pollution; anoxic sediment and depth were also included in this category","algae blooms, chlorophyll, depth, nutrients (nitrogen, phosphorous), oxygen, ocean acidification, salinity, sedimentation, turbidity, water quality metrics"
+climate,climate; precipitation; temperature; temp; climate change,climate related variables,"precipitation, temperature, drought, warming, above average wet seasons, El Niño, ice cover"
+coastal development,coastal development; logging,coastal development ranging from watershed land use change to ,"land appropriation, shoreline armouring, coastline construction, land use change (e.g., logging, agriculture), dredging, port construction, urbanisation"
+aquaculture,aquaculture,"aquaculture developments, generally those suspended in the water, aquaculture that required land appropriation (e.g., shrimp farms) fell into the category of coastal development","oyster farming, fish farming"
+boating,boating,,
+cumulative impact metric,cumulative impact metric,the development and/or use of a cumulative impact metric,Water Framework Directive
+fishing,fishing,"any kind of fishing for fish, benthic species (e.g., worms, clams)","bait grubbing, bivalve trawling, recreational bivalve harvesting"
+hydrology,hydrology; erosion; bathymetry; depth; flood; sea level rise; wind; earthquake/tsunami; hydrology/bathymetry,changes to waterflow and movement of sand forms,"coastal erosion, flood, sea level, sediment deposition patterns (e.g., sand banks), water velocity"
+management/restoration,management; restoration,management policies including water quality regulations and/or remediation of habitat,"removal of dikes/coastal armouring, storm water run off regulations, relocation of wastewater outfalls"
+pollution,herbicides; oil spill; oil spills; pollution; ,non-nutrient pollution,"herbicides, oil spills, land based pollution (non-nutrient)"
+boating,anchor damage; propellor scarring; mooring damage,recreational boating activities that cause direct damage to seagrass,"mooring, propellor scarring"
+NA,NA,NA,NA
+storms,hurricanes; typhoons; flooding; storm swell; storms; floods; storm,drivers relating to storm intensity and frequency,"hurricanes/typhoons, flooding, storm swell, wind velocity"
+disease,wasting disease,"wasting disease, caused by marine slime mold","wasting disease (e.g., Labyrinthula zosterae)"
+invasive species,invasive; invasive species,includes invasive species such as urchins and seagrass,Syringodium isoetifolium (seagrass)

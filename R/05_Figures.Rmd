@@ -1,0 +1,60 @@
+---
+output: 
+  word_document: 
+    reference_docx: word-styles-reference-01.docx
+---
+
+![](../figures/site_map_with_bioregions.png){width=16.9cm}
+
+**Figure 1.** Global distribution of seagrass (green; data from UNEP-WCMC, Short 2021), with sites (n = 219) from 
+Waycott *et al.* 2009 and additional sites (n = 323) from 
+this study. Included are the seagrass bioregions adapted 
+from Short et al. (2007): 1. Temperate North Pacific, 2. Temperate North 
+Atlantic West, 3. Temperate North Atlantic East, 4. Tropical Atlantic, 
+5. Mediterranean, 6. Tropical Indo-Pacific, 7. Temperate Southern Oceans. 
+
+\newpage
+
+![](../figures/bioregion_GAM_scaled_to_initial.png){width=16.9cm}
+
+**Figure 2.** Bioregional trends in seagrass meadow area over time, estimated 
+using bioregion-specific generalised additive models. Mean meadow area is 
+expressed as a proportion of the meadow area observed in the initial surveys, 
+averaged across sites for each bioregion, and on a log~10~ scale, such that a 
+change from 1 to 0.1 equals a 10-fold decrease in seagrass area over time. 
+The shaded areas represent 95% confidence intervals of the GAM fits. The number of meadows 
+sampled in each decade are shown in grey at the bottom of each panel. The 
+bioregional trend in the Mediterranean does not include 16 sites that contained 
+only two sampled time points.
+
+
+\newpage
+
+![](../figures/all_bioregions_pseudo_log_y_sigma_0.5.png){width=16.9cm}
+
+**Figure 3.** Status of seagrass meadows over time and across bioregions. 
+Each point represents one seagrass meadow and point size represents the 
+maximum area ever observed for that meadow. The x-axis indicates the size of a 
+meadow at the beginning of a decade (e.g., 1990), as estimated using the 
+bioregional GAMs, relative to the maximum area ever observed at that meadow. 
+The y-axis is the instantaneous annual rate of change (%) in meadow area during 
+a decade. This axis has been transformed using the signed pseudo logarithm 
+(sigma = 0.5, base = 10) to improve visualisation of the high number of meadows 
+with rates of change less than 10%. As values increase above 10, this axis 
+approximates a log~10~ scale. 
+
+\newpage
+
+![](../figures/attribution_methods.png){width=8cm}
+
+**Figure 4.** Proportion of studies in each category of causal attribution method. 
+The methods are described in Table 1 and are shown in order of strength of attribution.
+
+\newpage
+
+![](../figures/primary-driver-frequency-plot.png){width=16.9cm}
+
+**Figure 5.** Frequency of the primary drivers cited as potential drivers of 
+change in seagrass meadow area. Examples of specific drivers considered in each 
+driver category are detailed in Table S2.
+

@@ -1,0 +1,83 @@
+---
+output: 
+  word_document: 
+    reference_docx: word-styles-reference-01.docx
+---
+
+
+**Table 1.** Categories of strength of attribution of change in seagrass area to 
+specific drivers of change.
+
+```{r, echo = FALSE}
+library(flextable)
+attribution_table <- tibble(
+  `Attribution category` = c("None", "Descriptive", "Visual", "Inferential"), 
+   Description = c("Study did not attribute change to specific driver(s).",
+
+                   "Attribution of change was mentioned only in the discussion 
+                    and no driver data were presented, and/or attributions were 
+                    made from anecdotal descriptions of the local context (e.g., 
+                    increased human population over the time-series, assumed 
+                    declines in water quality, etc.).", 
+
+                    "Environmental or driver (e.g., human population) data were 
+                    graphically presented and compared visually with temporal 
+                    trends in seagrass meadow extent. Alternatively, direct 
+                    image comparisons (e.g., before and after events such as a 
+                    hurricane or building an aquaculture facility in a seagrass 
+                    meadow) were provided.", 
+
+                    "Inferential statistics were used to test for a relationship 
+                    between a driver and temporal trends in seagrass meadow 
+                    extent. These included the use of before-after-control-impact 
+                    designs, direct correlations between potential drivers and 
+                    temporal trends in seagrass meadow extent, or experiments 
+                    testing the effect of drivers and coupled with temporal 
+                    trends in seagrass meadow extent.")
+   ) %>% 
+  mutate(Description = str_squish(Description))
+
+attribution_table %>% 
+  flextable %>% 
+  align(align = "left", part = "all") %>% 
+  width(j = c("Attribution category", "Description"), width = c(1.8, 4.2))
+
+```
+
+\newpage
+
+**Table 2.** Net change, gains and losses in total area of seagrass surveyed 
+around the globe. Net change is expressed as a % of the maximum total area 
+surveyed in each bioregion, as well as in absolute area (km^2).
+
+```{r, echo = FALSE}
+net_change_table <- readRDS(here::here('tables/net_change_max_area.RDS'))
+net_change_table %>% 
+  mutate(net_change = convertr::convert(net_change, "ha", "km2"), 
+         gain = convertr::convert(gain, "ha", "km2"), 
+         loss = convertr::convert(loss, "ha", "km2"), 
+         total_area = convertr::convert(total_area, "ha", "km2")) %>%
+  flextable() %>%
+  set_header_labels(bioregion = "Bioregion", 
+                    percent_change = "Net change (%)", 
+                    net_change = "Net change (km^2)", 
+                    gain = "Gain (km^2)", 
+                    loss = "Loss (km^2)", 
+                    total_area = "Maximum total area surveyed (km^2)", 
+                    time_span = "Time span") %>% 
+  colformat_num(j = "percent_change", digits = 1) %>% 
+  colformat_num(j = c("net_change", "gain", "loss", "total_area"), digits = 0, 
+                big.mark = ",") %>% 
+  border(i = 8, border.top = officer::fp_border(width = 2)) %>% 
+  autofit() %>% 
+  compose(part = "header", j = "net_change", 
+          value = as_paragraph("Net change (km", as_sup("2"), ")"))  %>%
+  compose(part = "header", j = "gain", 
+          value = as_paragraph("Gain (km", as_sup("2"), ")"))  %>%
+  compose(part = "header", j = "loss", 
+          value = as_paragraph("Loss (km", as_sup("2"), ")"))  %>%
+  compose(part = "header", j = "total_area", 
+          value = as_paragraph("Maximum total area surveyed (km", as_sup("2"), ")"))  %>%
+  align(align = "center", part = "header") %>% 
+  width(width = c(4, 2.5, 2.5, 2.25, 2.25, 3, 3) / cm(1))
+```

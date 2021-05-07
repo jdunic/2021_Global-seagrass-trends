@@ -1,0 +1,231 @@
+---
+output: 
+  word_document: 
+    reference_docx: word-styles-reference-01.docx
+---
+
+![](../figures/PRISMA-updated.png)  
+
+**Figure S1.** PRISMA flow diagram documenting the study selection criteria and 
+process.
+
+
+![](../figures/SOM/duration_study_count_histogram.png)  
+
+<br>
+
+**Figure S2.** Distribution of study durations. Study durations ranged from one to 128 years.
+
+
+\newpage
+
+![](../figures/net_change/net_change_all_sites_raw_data_point_size_sqrt.png)  
+
+<br>
+
+**Figure S3.** Global size distribution of net losses (red, left) and net gains 
+(blue, right). Net change in meadow extent (y-axis) is log~10~-scaled and number 
+of meadows is on the x-axis. Each point represents the net change in a meadow 
+over its entire time series (area~final~ – area~initial~). To demonstrate the 
+difference in magnitude of net change between small and large extents, point 
+size corresponds to net change in area in a near-linear fashion. 
+
+\newpage
+
+
+![](../figures/bioregion_GAM_scaled_to_initial_fixed_axes_area.png)  
+
+<br> 
+
+**Figure S4.** Bioregional trends in seagrass areal extent over time, estimated 
+using bioregion specific generalised additive models. The shaded areas represent 
+95% confidence intervals of the GAM fits. The same data are presented as in 
+Figure 2 but axes are fixed across bioregions to highlight differences in 
+magnitude of trends in seagrass areal extent and the length of time-series. 
+Mean proportion of change is scaled to the initial values estimated for each 
+bioregion and on a log~10~ scale, such that a change from 1 to 0.1 equals a 
+10-fold decrease in seagrass area over time. 
+
+<br>
+<br>
+
+![](../figures/SOM/sampled_survey_effort_over_time_by_bioregion.png)  
+
+<br> 
+
+**Figure S5.** Total area of seagrass surveyed over time. Total area surveyed in 
+each decade was calculated using the observed maximum areal extent for all sites 
+sampled in a given decade. 
+
+<br>
+<br>
+<br>
+<br>
+
+![](../figures/net_change/net_change_by_bioregion_raw_data_point_size_sqrt.png)  
+
+<br>
+
+**Figure S6.** Size distribution of net losses (red, left) and net gains 
+(blue, right) across bioregions. Net change in meadow area (y-axis) is 
+log~10~-scaled and number of meadows is on the x-axis. Each point represents the 
+net change in a meadow over its entire time series (area~final~ – area~initial~). 
+To demonstrate the difference in magnitude of net change between small and large 
+areas, point size corresponds to net change in area in a near-linear fashion. 
+
+<br>
+<br>
+
+
+![](../figures/status_plots/global_all-time_density_2percent.png)  
+
+<br>
+
+**Figure S7.** Status of all seagrass meadows in all decades.
+Each point represents one seagrass meadow in a decade and point size represents 
+the maximum area ever observed for that meadow. The x-axis indicates the size of 
+a meadow at the beginning of a decade (e.g., 1990), as estimated using the 
+bioregional GAMs, relative to the maximum area ever observed at that meadow. 
+The y-axis is the instantaneous annual rate of change (%) in meadow area during 
+a decade. This axis has been transformed using the signed pseudo logarithm 
+(sigma = 0.5, base = 10) to improve visualisation of the high number of meadows 
+with rates of change less than 10%. As values increase above 10, this axis 
+approximates a log~10~ scale. 
+
+
+![](../figures/SOM/abs_loss_gain_funnel.png)  
+
+<br>
+
+**Figure S8.** Comparison of the relationship between the absolute annual rate of 
+change (%) and fraction of maximum ever observed area between meadows that 
+experienced losses and those that experienced gains. Each point represents one 
+seagrass meadow in a decade and point size represents.
+
+
+![](../figures/status_plots/size-bin_decade_bioregions_pseudo_log_y_sigma_0.5.png)  
+
+<br>
+
+**Figure S9.** Status of seagrass meadows split into four size bins of maximum 
+observed meadow size (< 10 ha, 10 – 100 ha, 100 – 1000 ha, > 1000 ha). Each dot 
+represents one seagrass meadow, with size representing the maximum areal extent 
+observed at that meadow over its entire time series and colour indicating the 
+bioregion. The x-axis indicates the size of a meadow in a decade, as estimated 
+using the bioregional GAMs, relative to the maximum size ever observed in the 
+time series of that meadow. Rate of change (%) in meadow areal extent, shown on 
+the y-axis, has been transformed using the signed pseudo logarithm 
+(sigma = 0.5, base = 10)
+
+<br>
+
+![](../figures/SOM/cv_max_area.png)
+
+**Figure S10.** Relationship between coefficient of variation of each meadow 
+extent time-series and the maximum observed meadow size. The coefficient of 
+variation was calculated for each meadow as the standard deviation of observed 
+meadow sizes divided by the mean observed meadow size. 
+
+
+<br>
+
+![](../figures/SOM/attribution-method_primary-driver-plot.png)
+
+**Figure S11.** Frequency of the consideration of potential drivers of change in 
+seagrass meadow area and attribution method used in these considerations. 
+Examples of specific drivers considered in each driver category are detailed in 
+Table S2.
+
+<br>
+
+![](../figures/SOM/event_ts_plot.png)  
+
+<br>
+
+**Figure S12.** Management actions. After management or restoration actions 
+(grey lines), most sites experienced an increase in areal extent over time.
+
+\newpage
+
+**Table S3.** Management and restoration actions taken in Figure S12.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+event_table <- 
+    read_csv(here::here('tables/events_and_dates.csv')) %>% 
+    select(studyid, name, site, restoration_event, event_year, notes) %>% 
+    #mutate(studyid = case_when(
+    #    notes == "info from study 87" ~ paste0(studyid, "*"),
+    #    is.na(notes) ~ studyid 
+    #)) %>% 
+    filter(studyid != "188a") %>% 
+    select(-notes)
+
+event_table %>% 
+    flextable() %>% 
+    set_header_labels(studyid = "Study id", 
+                      name = "Location", 
+                      site = "Site name", 
+                      restoration_event = "Event", 
+                      event_year = "Year") %>% 
+    width(width = c(1.75, 3.5, 3.25, 5.75, 2.25) / cm(1)) %>% 
+    footnote(i = 1:7, j = 1, 
+             value = as_paragraph("Event data from study 87."), 
+             ref_symbols = "*")
+```
+
+
+\newpage
+
+![](../figures/status_plots/waycott_comparison_orange-green.png)
+
+<br>
+
+**Figure S13.** Status of seagrass meadows over time and across bioregions 
+comparing the sites found in this study (green) and sites first included in 
+Waycott et al. (2009; orange). Each point represents the status of one seagrass 
+meadow in a given decade, while and point size represents the maximum area ever 
+observed for that meadow. Meadows that have experienced more severe losses will 
+be farther on the left of a panel; meadows near their maximum size will be on 
+the right (near vertical line, x = 1); and stable/slowly changing meadows are 
+near the horizontal line, y = 0. The x-axis indicates the size of a meadow at 
+the beginning of a decade (e.g., 1990), as estimated using the bioregional GAMs, 
+relative to the maximum area ever observed at that meadow. The y-axis is the 
+instantaneous annual rate of change (%) in meadow area during a decade. Note 
+that the y-axis varies in range across the bioregions and has been transformed 
+using the signed pseudo logarithm (sigma = 0.5, base = 10) to improve 
+visualisation of the high number of meadows with rates of change less than 10%. 
+As values increase above 10, this axis approximates a log10 scale.
+
+
+\newpage
+
+**Figures not currently referenced in text**
+
+
+
+![](../figures/SOM/cumulative_number_of_publications.png)
+
+**Figure SX.** Cumulative number of publications over time for each bioregion. 
+
+
+
+![](../figures/net_change/net_change_by_decade_raw_data_point_scale_size_1.5-15.png)
+
+**Figure X.** Size distribution of net losses (red, left) and net gains (blue, right) over time. Net change in meadow extent (y-axis) is log~10~-scaled and number of meadows is on the x-axis. Each point represents the net change in a meadow over its entire time series (area~final~ – area~initial~). To demonstrate the difference in magnitude of net change between small and large extents, point size corresponds to net change in area in a near-linear fashion. 
+
+
+
+
+![](../figures/SOM/distribution_of_meadows_sizes_by_bioregion.png)
+
+**Figure SX.** Distribution of surveyed meadow sizes (determined using maximum observed area) across bioregions.
+
+
+
+
+![](../figures/SOM/distribution_of_meadows_sizes_by_measurement_method.png)
+
+**Figure SX.** Measurement methods – not referenced in text as of yet
+
+

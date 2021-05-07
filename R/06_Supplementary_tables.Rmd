@@ -1,0 +1,96 @@
+---
+output: 
+  word_document: 
+    reference_docx: word-styles-reference-01.docx
+---
+
+```{r, echo=FALSE, message=FALSE}
+library(flextable)
+
+duration_table <- readRDS(here::here('data_outputs/duration_table.RDS'))
+
+driver_cats <- read_csv(here::here("data//driver_cat_desc_lookup.csv"))
+
+apriori_bioregion_count <- readRDS(here::here('data_outputs/apriori_bioregion_count.RDS'))
+
+```
+
+
+**Table S1.** Frequency of time-series with short, moderate, and long time-series. 
+The proportion of total time-series and studies (%) is show next to the count in 
+parentheses. 
+
+```{r, echo = FALSE}
+
+duration_table %>% 
+  mutate(site_col = paste0(sites, " (", site_prop, ")")) %>% 
+  mutate(study_col = paste0(studies, " (", study_prop, ")")) %>% 
+  select(duration_bin, site_col, study_col) %>% 
+  flextable::flextable() %>% 
+  flextable::set_header_labels(
+    values = c(duration_bin = 'Duration (years)', 
+               site_col = 'Number of time-series\n(proportion %)', 
+               study_col = 'Number of studies\n(proportion %)')) %>% 
+  theme_booktabs() %>% 
+  # hline(i = 1, j = 1:5, border = officer::fp_border(width = 2), part = "header") %>% 
+  # hline(i = 1, j = 2:5, border = officer::fp_border(width = 1), part = "header") %>% 
+  # hline(i = 7, j = 1:5, border = officer::fp_border(width = 1), part = "body") %>% 
+  #align(i = 1, j = 2:3, align = "center", part = "header") %>% 
+  width(width = c(4, 5, 5) / cm(1))
+
+```
+
+<br>
+<br>
+
+<br>
+<br>
+
+**Table S2.** Distribution of a priori expectations of studies, as indicated by 
+authors, across bioregions. Categories of ‘none’, ‘decrease’, ‘increase’, and 
+‘other’ were made from author statements in the introduction of studies. The 
+category ‘other’ captured U-shaped trajectories of declines then recovery.
+
+```{r, echo=FALSE}
+apriori_bioregion_count %>% 
+  as_tibble %>%
+  pivot_wider(names_from = apriori_cat, values_from = n) %>% 
+  select(bioregion, none, decrease, increase, other) %>% 
+  janitor::adorn_totals(name = "All regions") %>% 
+  rename_all(str_to_sentence) %>%
+  flextable::flextable() %>% 
+  flextable::add_header_row(values = c('Bioregion', 'A priori category', '', '', '')) %>% 
+  merge_at(i = 1, j = 2:5, part = "header") %>% 
+  merge_at(i = 1:2, j = 1, part = "header") %>% 
+  theme_booktabs() %>% 
+  hline(i = 1, j = 1:5, border = officer::fp_border(width = 2), part = "header") %>% 
+  hline(i = 1, j = 2:5, border = officer::fp_border(width = 1), part = "header") %>% 
+  hline(i = 7, j = 1:5, border = officer::fp_border(width = 1), part = "body") %>% 
+  align(i = 1, j = 2:5, align = "center", part = "header") %>% 
+  width(width = c(6.5, 2, 2.5, 2.25, 2) / cm(1))
+
+```
+
+<br>
+<br>
+
+<br>
+<br>
+
+**Table S3.** Examples of the types of activities and environmental states 
+assigned to the driver categories used in Figure 5.
+
+```{r, echo=FALSE}
+driver_cats %>% 
+  select(driver_cat, examples) %>% 
+  filter(driver_cat != "cumulative impact metric") %>%
+  drop_na() %>% 
+  mutate_all(str_to_sentence) %>% 
+  arrange(driver_cat) %>% 
+  rename("Driver" = driver_cat) %>% 
+  rename_all(str_to_sentence) %>% 
+  flextable::flextable() %>% 
+  theme_booktabs() %>% 
+  align(align = "left", part = "all") %>% 
+  width(width = c(4.6, 12) / cm(1))
+```

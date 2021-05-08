@@ -95,8 +95,8 @@ bioregion_gams_plot <-
     theme(axis.ticks.x = element_line(colour = "grey50")) + 
     annotation_logticks(sides = 'l', colour = 'grey50', short = unit(0.1, 'cm'), long = unit(0.2, 'cm')) + 
     labs(y = "Mean meadow area relative to initial area", xlab = "Year")
-bioregion_gams_plot + 
-  geom_text(data = test, aes(x = decade, y = 0.001, label = n_sites), size = 2.75, colour = "grey50")
+  bioregion_gams_plot + 
+    geom_text(data = test, aes(x = decade, y = 0.001, label = n_sites), size = 2.75, colour = "grey50")
 ggsave(here::here("figures/bioregion_GAM_scaled_to_initial_fixed_axes_area.png"), width = 20 / cm(1), height = 20 / cm(1))
 
 # ------------------------------------------------------------------------------
@@ -165,3 +165,6 @@ bioregion_gam_plot2 <-
   xlab("Year")
 bioregion_gam_plot2
 ggsave(here::here("figures/bioregion_GAM_scaled_to_initial.png"), width = 16.9 / cm(1), height = 20 / cm(1))
+ggsave(plot = bioregion_gam_plot2, filename = here::here('figures/main_text/Figure-2_bioregion_GAM_scaled_to_initial.eps'), 
+       device = cairo_ps,
+       width = 16.9 / cm(1), height = 20 / cm(1))

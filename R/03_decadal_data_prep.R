@@ -5,7 +5,7 @@ library(scales)
 library(patchwork)
 library(here)
 
-source(here::here('R/00_functions.R'))
+source(here::here('R/01_functions.R'))
 
 # Set colour scheme for bioregional trends
 bioregion_colours <- RColorBrewer::brewer.pal(7, "Dark2")

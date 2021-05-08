@@ -84,12 +84,16 @@ lab_xy <-
   select(-X) %>% 
   as_tibble
 
+# ------------------------------------------------------------------------------
+# Main text Figure 1. 
+# ------------------------------------------------------------------------------
 dev.off()
 dev.new(width = 16.9 / cm(1), height = 10 / cm(1)); plot(1)
+site_map <- 
   ggplot() + 
     geom_sf(data = mod_bioregions, aes(fill = bioregion_colours), colour = NA, size = 0.1, alpha = 0.3) +
     scale_fill_identity() +
-    geom_polygon(data = world, aes(x = long, y = lat, group = group), fill = 'grey95', colour = "grey50", size = 0.2) +
+    geom_polygon(data = world, aes(x = long, y = lat, group = group), fill = 'grey93', colour = "grey50", size = 0.2) +
     geom_point(data = points_df, aes(x = coords.x1, y = coords.x2), colour = '#75D054FF', size = 1) + 
     geom_point(data = filter(map_df, waycott_study == TRUE), aes(x = lon, y = lat), 
                shape = 1, size = 2, stroke = 1, colour = '#440154FF') + 
@@ -114,5 +118,8 @@ dev.new(width = 16.9 / cm(1), height = 10 / cm(1)); plot(1)
     guides(fill = "none", colour = guide_legend(override.aes = list(shape = c(21, 1), colour = c('grey30', '#440154FF'), fill = c('#FDE725FF', "white"), size = c(4, 2.5), stroke = c(0.5, 1.5), alpha = 1)), 
            shape = "none") + 
     ylim(-70, 90)
-
+site_map
 ggsave(here::here('figures/site_map_with_bioregions.png'), width = 16.9 / cm(1), height = 10 / cm(1))
+ggsave(plot = site_map, filename = here::here('figures/main_text/Figure-1_site_map_with_bioregions.eps'), 
+       device = cairo_ps,
+       width = 16.9 / cm(1), height = 10 / cm(1))

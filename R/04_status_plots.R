@@ -43,7 +43,7 @@ ggplot(data = decadal_df_ne_1930) +
   #                 max_size = 4) +
   # Sqrt transformation of size did a better job of 
   scale_size(trans = "sqrt", 
-             range = c(0.75, 6), 
+             range = c(0.5, 6), 
              breaks = c(0.1, 1, 10, 100, 1000),
              limits = c(1e-6, 6000), 
              labels = c('0.1', '1', '10', '100', '1000')) + 
@@ -87,7 +87,7 @@ custom_layers <- function(ggplot_obj) {
   #                 labels = c('\u22640.1', '1', '10', '100', '1000'), 
   #                 max_size = 3) +
   scale_size(trans = "sqrt", 
-             range = c(0.75, 4), 
+             range = c(0.5, 5), 
              breaks = c(0.1, 1, 10, 100, 1000),
              limits = c(1e-6, 6000), 
              labels = c('0.1', '1', '10', '100', '1000')) + 
@@ -151,14 +151,22 @@ status_so <-
           legend.key.width = unit(2, "mm"),
           legend.text = element_text(size = 10, margin = margin(r = 5, l = 0))) +
     ggtitle("Temperate Southern Oceans")
-#
+# ------------------------------------------------------------------------------
+# Main text Figure 3. 
+# ------------------------------------------------------------------------------
 dev.off()
 dev.new(width = 16.9 / cm(1), height = 20 / cm(1))
 status_tnp + status_tnaw + status_tnae + status_m + status_ta + status_tip + status_so + 
   plot_layout(ncol = 1)
 ggsave(here("figures/all_bioregions_pseudo_log_y_sigma_0.5.png"), width = 16.9 / cm(1), height = 20 / cm(1))
+fig_3 <- status_tnp + status_tnaw + status_tnae + status_m + status_ta + status_tip + status_so + 
+  plot_layout(ncol = 1)
+ggsave(plot = fig_3, filename = here::here('figures/main_text/Figure-3_all_bioregions_pseudo_log_y_sigma_0.5.eps'), 
+       device = cairo_ps,
+       width = 16.9 / cm(1), height = 20 / cm(1))
 
-
+# Status by meadow size bin
+# ------------------------------------------------------------------------------
 dev.off()
 dev.new(width = 16.9 / cm(1), height = 20 / cm(1))
 status_size_bins_ne <- 
@@ -172,7 +180,7 @@ status_size_bins_ne <-
     # scale_size_area(trans = "log10", breaks = 10 * c(0.1, 1, 10, 100, 1000), max_size = 3,
     #                 labels = c('\u22640.1', '1', '10', '100', '1000')) +
     scale_size(trans = "sqrt", 
-             range = c(0.75, 4), 
+             range = c(0.5, 5), 
              breaks = c(0.1, 1, 10, 100, 1000),
              limits = c(1e-6, 6000), 
              labels = c('0.1', '1', '10', '100', '1000')) + 

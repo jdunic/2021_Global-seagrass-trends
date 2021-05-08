@@ -10,9 +10,13 @@ att_df <-
     # Deal with one missing attribution category
     mutate(attribution = replace(attribution, (studyid == "114" & site == "Obidos Lagoon"), "descriptive")) 
 
+# ------------------------------------------------------------------------------
+# Main text Figure 4. 
+# ------------------------------------------------------------------------------
 dev.off()
 dev.new(width = 8 / cm(1), height = 7 / cm(1))
 
+att_method_plot <- 
 area_ts %>% 
   select(studyid, site, att_method, none:descriptive) %>% 
   gather(key = attribution, value = yes_no, none, inferential, visual, descriptive) %>% 
@@ -27,8 +31,11 @@ ggplot(., aes(x = attribution)) +
   xlab('Attribution method') +
   theme(axis.title.x = element_text(vjust = -1), 
         plot.margin = margin(t = 3, r = 1, b = 7, l = 6))
+att_method_plot
 ggsave(here::here('figures/attribution_methods.png'), width = 8 / cm(1), height = 7 / cm(1))
-
+ggsave(plot = att_method_plot, filename = here::here('figures/main_text/Figure-4_attribution_methods.eps'), 
+       device = cairo_ps,
+       width = 8 / cm(1), height = 7 / cm(1))
 
 
 

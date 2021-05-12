@@ -76,6 +76,9 @@ driver_cat_counts <-
   mutate(driver_att_label = paste0(driver_cat, " (", driver_study_count, ")")) %>%
   mutate(driver_cat = fct_reorder(driver_cat, driver_study_count)) 
 
+# ------------------------------------------------------------------------------
+# Main text Figure 5. 
+# ------------------------------------------------------------------------------
 driver_freq_plot <-
   driver_cat_counts %>% 
   distinct(driver_cat, driver_study_count) %>% 
@@ -89,7 +92,12 @@ dev.off()
 dev.new(width = 16.9 / cm(1), height = 10 / cm(1))
 driver_freq_plot
 ggsave(here::here('figures/primary-driver-frequency-plot.png'), width = 16.9 / cm(1), height = 10 / cm(1))
+ggsave(plot = driver_freq_plot, filename = here::here('figures/main_text/Figure-5_primary-driver-frequency-plot.eps'), 
+       device = cairo_ps,
+       width = 16.9 / cm(1), height = 10 / cm(1))
 
+# Attribution method by driver
+# ------------------------------------------------------------------------------
 dev.off()
 dev.new(width = 16.9 / cm(1), height = 14 / cm(1))
 driver_att_freq_plot <-

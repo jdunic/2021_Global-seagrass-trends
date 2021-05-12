@@ -97,7 +97,7 @@ bioregion_gams_plot <-
     labs(y = "Mean meadow area relative to initial area", xlab = "Year")
   bioregion_gams_plot + 
     geom_text(data = test, aes(x = decade, y = 0.001, label = n_sites), size = 2.75, colour = "grey50")
-ggsave(here::here("figures/bioregion_GAM_scaled_to_initial_fixed_axes_area.png"), width = 20 / cm(1), height = 20 / cm(1))
+ggsave(here::here("figures/SOM/bioregion_GAM_scaled_to_initial_fixed_axes_area.png"), width = 20 / cm(1), height = 20 / cm(1))
 
 # ------------------------------------------------------------------------------
 # Main text Figure 2. 

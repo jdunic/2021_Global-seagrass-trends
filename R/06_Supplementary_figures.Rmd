@@ -19,7 +19,7 @@ process.
 
 \newpage
 
-![](../figures/net_change/net_change_all_sites_raw_data_point_size_sqrt.png)  
+![](../figures/SOM/net_change_all_sites_raw_data_point_size_sqrt.png)  
 
 <br>
 
@@ -33,7 +33,7 @@ size corresponds to net change in area in a near-linear fashion.
 \newpage
 
 
-![](../figures/bioregion_GAM_scaled_to_initial_fixed_axes_area.png)  
+![](../figures/SOM/bioregion_GAM_scaled_to_initial_fixed_axes_area.png)  
 
 <br> 
 
@@ -62,7 +62,7 @@ sampled in a given decade.
 <br>
 <br>
 
-![](../figures/net_change/net_change_by_bioregion_raw_data_point_size_sqrt.png)  
+![](../figures/SOM/net_change_by_bioregion_raw_data_point_size_sqrt.png)  
 
 <br>
 
@@ -77,7 +77,7 @@ areas, point size corresponds to net change in area in a near-linear fashion.
 <br>
 
 
-![](../figures/status_plots/global_all-time_density_2percent.png)  
+![](../figures/SOM/global_all-time_density_2percent.png)  
 
 <br>
 
@@ -103,7 +103,7 @@ experienced losses and those that experienced gains. Each point represents one
 seagrass meadow in a decade and point size represents.
 
 
-![](../figures/status_plots/size-bin_decade_bioregions_pseudo_log_y_sigma_0.5.png)  
+![](../figures/SOM/size-bin_decade_bioregions_pseudo_log_y_sigma_0.5.png)  
 
 <br>
 
@@ -134,7 +134,7 @@ meadow sizes divided by the mean observed meadow size.
 **Figure S11.** Frequency of the consideration of potential drivers of change in 
 seagrass meadow area and attribution method used in these considerations. 
 Examples of specific drivers considered in each driver category are detailed in 
-Table S2.
+Table S3.
 
 <br>
 
@@ -142,7 +142,8 @@ Table S2.
 
 <br>
 
-**Figure S12.** Management actions. After management or restoration actions 
+**Figure S12.** Timing of management actions at nine locations, in the context 
+of seagrass meadow area time-series. After management or restoration actions 
 (grey lines), most sites experienced an increase in areal extent over time.
 
 \newpage
@@ -177,7 +178,7 @@ event_table %>%
 
 \newpage
 
-![](../figures/status_plots/waycott_comparison_orange-green.png)
+![](../figures/SOM/waycott_comparison_orange-green.png)
 
 <br>
 
@@ -196,36 +197,3 @@ that the y-axis varies in range across the bioregions and has been transformed
 using the signed pseudo logarithm (sigma = 0.5, base = 10) to improve 
 visualisation of the high number of meadows with rates of change less than 10%. 
 As values increase above 10, this axis approximates a log10 scale.
-
-
-\newpage
-
-**Figures not currently referenced in text**
-
-
-
-![](../figures/SOM/cumulative_number_of_publications.png)
-
-**Figure SX.** Cumulative number of publications over time for each bioregion. 
-
-
-
-![](../figures/net_change/net_change_by_decade_raw_data_point_scale_size_1.5-15.png)
-
-**Figure X.** Size distribution of net losses (red, left) and net gains (blue, right) over time. Net change in meadow extent (y-axis) is log~10~-scaled and number of meadows is on the x-axis. Each point represents the net change in a meadow over its entire time series (area~final~ – area~initial~). To demonstrate the difference in magnitude of net change between small and large extents, point size corresponds to net change in area in a near-linear fashion. 
-
-
-
-
-![](../figures/SOM/distribution_of_meadows_sizes_by_bioregion.png)
-
-**Figure SX.** Distribution of surveyed meadow sizes (determined using maximum observed area) across bioregions.
-
-
-
-
-![](../figures/SOM/distribution_of_meadows_sizes_by_measurement_method.png)
-
-**Figure SX.** Measurement methods – not referenced in text as of yet
-
-

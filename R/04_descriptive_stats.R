@@ -95,3 +95,45 @@ ggplot(data = ., aes(x = max_area, y = cv)) +
                 labels = parse(text = x_labels), 
                 limits = c(1e-4, 1.5e6))
 ggsave('figures/SOM/cv_max_area.png', width = 16.9 / cm(1), height = 10 / cm(1))
+
+
+# 
+dev.off()
+dev.new(width = 16.9 / cm(1), height = 10 / cm(1))
+
+p1 <-
+decadal_df_ne_1930 %>% 
+filter(trend_ci_50 < 0) %>%
+ggplot(data = .) +
+  mytheme(base_size = 12) +
+  aes(x = frac_of_max, y = abs(trend_ci_50), size = NULL) +
+  geom_vline(xintercept = 1, colour = "grey70") + 
+  geom_point(size = 1, alpha = 0.5) + 
+  labs(y = "Absolute annual rate of change (%)", 
+       x = "Fraction of maximum observed area") + 
+  ylim(c(0, 85)) +
+  xlim(c(0, 1.15)) +
+  theme(axis.title.x = element_blank(), 
+        axis.title.y = element_text(vjust = 4),
+        plot.title = element_text(size = 12)) + 
+  ggtitle("Rates of Loss")
+p2 <-
+decadal_df_ne_1930 %>% 
+filter(trend_ci_50 > 0) %>%
+filter(trend_ci_50 < 100) %>% 
+ggplot(data = .) +
+  mytheme(base_size = 12) +
+  aes(x = frac_of_max, y = abs(trend_ci_50), size = NULL) +
+    geom_vline(xintercept = 1, colour = "grey70") + 
+  geom_point(size = 1, alpha = 0.5) + 
+  theme(axis.title.y = element_blank(), 
+        axis.title.x = element_blank(), 
+        plot.title = element_text(size = 12)) + 
+  labs(y = "Absolute annual rate of change (%)", 
+       x = "Fraction of maximum observed area") + 
+  ylim(c(0, 85)) +
+  xlim(c(0, 1.15)) +
+  ggtitle("Rates of Gain")
+p1 + p2 +
+plot_annotation(caption = "Fraction of maximum observed area", theme = theme(plot.title = element_blank(), plot.caption = element_text(size = 12, hjust = 0.5, vjust = 3)))
+ggsave(here::here('figures/SOM/abs_loss_gain_funnel.png'))

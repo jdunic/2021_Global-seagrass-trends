@@ -86,37 +86,6 @@ area_ts <-
               )
     )
 
-# Notes:
-# Temperate Northern Atlantic East
-# ECOREGION %in% c(1:3, 18:27) &
-# (lon < -30)
-
-# Temperate Northern Atlantic West
-# Coded right now to be consistent with Short et al. bioregions, but in the 
-# future (beyond this paper likely) Canadian arctic might be it's own thing
-# ECOREGION %in% c(3:11, 37:41) &
-# (lon >= -30)
-
-# Tropical Atlantic
-# ECOREGION %in% c(42, 43, 62:77, 180, 79:86, 190)
-# Short also includes Pacific side:
-# ECOREGION %in% c(166:170)
-
-# Mediterranean
-# ECOREGION %in% c(28:36, 44)
-
-# Temperate North Pacific
-# East side
-# ECOREGION %in% c(45:52) & (lat > 32)  # lat estimate from Fig 1 Short et al.
-# West side
-# ECOREGION %in% c(12:14, 53:61)
-
-# Tropical Indo Pacific
-# ECOREGION %in% c(87:150, 152:163)
-
-# Southern ocean, a bit rough around australia
-# ECOREGIOn %in% c(151, 177:179, 181:188, 191:214)
-
 # Simplify measurement categories for analysis
 area_ts <- 
   area_ts %>% 

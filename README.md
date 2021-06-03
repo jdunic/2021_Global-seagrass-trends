@@ -2,7 +2,7 @@
 
 Citation: Dunic, J. C., Brown, C. J., Connolly, R. M., Turschwell, M. P., & Côté, I. M. (2021). Long-term declines and recovery of meadow area across the world’s seagrass bioregions. *Global Change Biology*, *n/a*(n/a). https://doi.org/10.1111/gcb.15684
 
-![](/Users/jillian/Manuscripts/2021-Global-seagrass-trends/graphical-abstract.jpeg)
+![](./graphical-abstract.jpeg)
 
 
 

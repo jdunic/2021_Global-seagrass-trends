@@ -22,18 +22,18 @@ attribution_table <- tibble(
 
                     "Environmental or driver (e.g., human population) data were 
                     graphically presented and compared visually with temporal 
-                    trends in seagrass meadow extent. Alternatively, direct 
+                    trends in seagrass meadow area. Alternatively, direct 
                     image comparisons (e.g., before and after events such as a 
                     hurricane or building an aquaculture facility in a seagrass 
                     meadow) were provided.", 
 
                     "Inferential statistics were used to test for a relationship 
                     between a driver and temporal trends in seagrass meadow 
-                    extent. These included the use of before-after-control-impact 
+                    area. These included the use of before-after-control-impact 
                     designs, direct correlations between potential drivers and 
-                    temporal trends in seagrass meadow extent, or experiments 
-                    testing the effect of drivers and coupled with temporal 
-                    trends in seagrass meadow extent.")
+                    temporal trends in seagrass meadow area, or experiments 
+                    testing the effect of drivers that were coupled with temporal 
+                    trends in seagrass meadow area.")
    ) %>% 
   mutate(Description = str_squish(Description))
 

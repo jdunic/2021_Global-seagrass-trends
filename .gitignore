@@ -1,5 +1,5 @@
 *.docx
 *.png
 data_outputs/GAM_objects/*
-data/spatial-data-layers/*
+data/spatial-data-layers/WCMC013-014_SeagrassPtPy2020_v7
 *.eps
